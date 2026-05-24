@@ -58,7 +58,7 @@ void kernel_main()
     xTaskCreate(task2, 2048, 1);
 
     // configura o vetor de trap
-    asm volatile("csrw tvec, %0" :: "r"(trap_entry));
+    asm volatile("csrw stvec, %0" :: "r"(trap_entry));
 
     //incializa o timer
     timer_init(100000);
