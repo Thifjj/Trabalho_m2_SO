@@ -43,13 +43,6 @@ trap_entry:
     sd t5, 232(sp)
     sd t6, 240(sp)
 
-    # 2. BLINDAGEM DO KERNEL: Força a carga do GP do sistema
-    # para que o trap_handler em C não exploda caso a task esteja corrompida.
-    .option push
-    .option norelax
-    la gp, __global_pointer$
-    .option pop
-
     mv a0, sp
     call trap_handler
 
